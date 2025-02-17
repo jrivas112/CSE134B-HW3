@@ -1,20 +1,12 @@
-/* =========================================
-   ✅ Requirement: CSS Variables (With Fallbacks)
-   ========================================= */
-   :root {
+:root {
     --primary-color: #007bff;
     --secondary-color: #6c757d;
     --bg-color: #f8f9fa;
     --text-color: #212529;
     --accent-color: color-mix(in srgb, var(--primary-color) 70%, white);
-    
-    /* Fallbacks */
     --fallback-bg-color: #ffffff;
 }
 
-/* =========================================
-   ✅ Requirement: Custom Fonts (With Fallbacks)
-   ========================================= */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     background-color: var(--bg-color, --fallback-bg-color);
@@ -23,14 +15,11 @@ body {
     padding: 0;
 }
 
-/* =========================================
-   ✅ Requirement: Layout Using CSS Grid & Flexbox (10 pts)
-   ========================================= */
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
-    min-height: 100dvh; /* ✅ Dynamic viewport units (1 pt) */
+    min-height: 100dvh;
 }
 
 header {
@@ -42,28 +31,69 @@ header {
     padding: 1rem;
 }
 
-.nav-menu {
+header {
     display: flex;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
 }
 
-.nav-menu li a {
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.nav-menu li {
+    display: inline-block;
+}
+
+.nav-menu a {
     text-decoration: none;
-    color: white;
     font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.nav-menu a:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0.8rem;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        width: 80%;
+        text-align: center;
+    }
 }
 
 main {
     display: grid;
-    grid-template-columns: 1fr 300px; /* "About Me" takes 1 part, "Projects" takes 2 parts */
+    grid-template-columns: 1fr 300px;
     gap: 3rem;
     padding: 2rem;
     align-items: stretch;
 }
 
-/* About Me - Smaller Section */
 .about {
     background: white;
     padding: 1.5rem;
@@ -71,7 +101,6 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Featured Projects - Bigger Section */
 .projects {
     background: white;
     padding: 1.5rem;
@@ -86,9 +115,6 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================================
-   ✅ Sidebar Profile Image Styling - Equal Dimensions & Border
-   ========================================= */
 .sidebar {
     display: flex;
     justify-content: center;
@@ -96,35 +122,29 @@ main {
     padding: 1rem;
 }
 
-/* ✅ Profile Image - Perfect Square with Border */
 .sidebar img {
-    width: 250px; /* Ensures equal width */
-    height: 250px; /* Ensures equal height */
-    object-fit: cover; /* Keeps image proportionally cropped */
-    border-radius: 15px; /* Soft rounded corners */
-    border: 5px solid #007bff; /* Adds a blue border */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow effect */
-    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 5px solid #007bff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* ✅ Hover Effect - Slight Scale */
 .sidebar img:hover {
-    transform: scale(1.05); /* Enlarges slightly on hover */
+    transform: scale(1.05);
 }
 
-
-/* =========================================
-   ✅ Requirement: CSS Animations, Transitions & Transforms (3 pts each)
-   ========================================= */
 .projects img {
     width: 100%;
     max-width: 200px;
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out; /* ✅ Transitions (3 pts) */
+    transition: transform 0.3s ease-in-out;
 }
 
 .projects img:hover {
-    transform: scale(1.1) rotate(5deg); /* ✅ Transforms (3 pts) */
+    transform: scale(1.1) rotate(5deg);
 }
 
 @keyframes fadeIn {
@@ -139,15 +159,12 @@ main {
 }
 
 .projects {
-    animation: fadeIn 0.8s ease-in-out; /* ✅ Animations (3 pts) */
+    animation: fadeIn 0.8s ease-in-out;
 }
 
-/* =========================================
-   ✅ Requirement: Media Queries for Responsive Design (Part 3)
-   ========================================= */
 @media (max-width: 768px) {
     main {
-        grid-template-columns: 1fr; /* Stack layout */
+        grid-template-columns: 1fr;
     }
     
     .nav-menu {
@@ -156,20 +173,13 @@ main {
     }
 }
 
-/* =========================================
-   ✅ Requirement: New CSS Selectors (Extra Credit)
-   ========================================= */
 .projects:has(img:hover) {
     background-color: var(--accent-color);
 }
 
-/* =========================================
-   ✅ Contact Page Styling
-   ========================================= */
-
-/* Form Styling */
 .contact-form {
     max-width: 70%;
+    height: 100%;
     margin: auto;
     padding: 1.5rem;
     background: white;
@@ -178,8 +188,8 @@ main {
 }
 
 fieldset {
+    height: inherit;
     border: 2px solid var(--primary-color);
-    padding: 1rem;
     border-radius: 5px;
 }
 
@@ -216,7 +226,6 @@ button[type="submit"]:hover {
     background: var(--accent-color);
 }
 
-/* ✅ Requirement: Dialog Box (CSS-Only) */
 dialog {
     border: none;
     padding: 1rem;
@@ -227,16 +236,11 @@ dialog {
     text-align: center;
 }
 
-/* Responsive Form Layout */
 @media (max-width: 768px) {
     .contact-form {
         width: 90%;
     }
 }
-
-/* =========================================
-   ✅ Contact Page Styling (Resume + Form Side by Side)
-   ========================================= */
 
 .contact-container {
     display: grid;
@@ -245,7 +249,6 @@ dialog {
     padding: 2rem;
 }
 
-/* Resume Section */
 .resume-section {
     background: white;
     padding: 1.5rem;
@@ -257,7 +260,6 @@ dialog {
     text-align: center;
 }
 
-/* Contact Form */
 .contact-form {
     width: 100%;
     height: 80%;
@@ -267,39 +269,35 @@ dialog {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Career Type Radio Buttons */
 .career-type {
     display: flex;
     gap: 1rem;
     margin-top: 0.5rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .contact-container {
-        grid-template-columns: 1fr; /* Stack layout for small screens */
+        grid-template-columns: 1fr;
+        
     }
 
     .resume-section, .contact-form {
         width: 100%;
+        height: 80%;
     }
 }
 
-/* =========================================
-   ✅ Footer Styling - Thicker & Blue Color
-   ========================================= */
 footer {
-    background-color: #007bff; /* Blue color */
+    background-color: #007bff;
     color: white;
     text-align: center;
-    padding: 2rem 0; /* Increased padding to make it thicker */
-    font-size: 1.2rem; /* Slightly larger font */
+    padding: 2rem 0;
+    font-size: 1.2rem;
     font-weight: bold;
     position: relative;
     width: 100%;
 }
 
-/* Style links inside the footer */
 footer a {
     color: white;
     text-decoration: underline;
