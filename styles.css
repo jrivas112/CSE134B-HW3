@@ -288,7 +288,7 @@ dialog {
         height: 80%;
     }
     .resume-section {
-        height: 80vh; 
+        height: 80vh; /* Reduce slightly to fit mobile screens */
         max-width: 100%;
         padding: 1rem;
     }
